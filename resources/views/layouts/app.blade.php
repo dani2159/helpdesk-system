@@ -160,7 +160,7 @@
     <script src="{{ asset('assets/vendor/aos/dist/aos.js') }}"></script>
 
     <!-- App Script -->
-    <script src="{{ asset('assets/js/hope-ui.js') }}" defer></script>
+    <script src="{{ asset('assets/js/hope-ui.js') }}"></script>
 
     <script>
         var url = window.location.href.split('/', 5).join('/');
@@ -171,6 +171,8 @@
             return this.href == url;
         }).parentsUntil(".navbar-nav > .nav-treeview").addClass('menu-open').prev('a').addClass('active');
     </script>
+
+    @yield('js')
 
 </body>
 
