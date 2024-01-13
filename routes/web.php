@@ -25,3 +25,7 @@ Route::prefix('sla')->group(function () {
     Route::put('/update/{id}', 'App\Http\Controllers\SlaController@update')->name('sla.update');
     Route::delete('/destroy/{id}', 'App\Http\Controllers\SlaController@destroy')->name('sla.destroy');
 });
+
+Route::prefix('list-group')->group(function () {
+    Route::get('/', 'App\Http\Controllers\ListGroupController@index')->name('list-group.index');
+});

@@ -17,7 +17,7 @@ class CreateSettingFonnteTable extends Migration
             $table->id();
             $table->string('token');
             $table->string('no_hp');
-            $table->string('id_group')->nullable();
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
     }

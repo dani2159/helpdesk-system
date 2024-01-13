@@ -14,6 +14,6 @@ class SettingFonnte extends Model
     protected $fillable = [
         'token',
         'no_hp',
-        'id_group'
+        'keterangan'
     ];
 }
