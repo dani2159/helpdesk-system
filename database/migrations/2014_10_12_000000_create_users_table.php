@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->string('id_role'); // 1 = admin, 2 = manager / kepala unit, 3 = staff
             $table->timestamps();
         });
     }

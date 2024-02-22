@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audio Scheduler</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      .container {
+        margin-top: 50px;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+</style>
+
+
+</head>
+<body>
+<div class="container">
+  <h1>Audio Scheduler</h1>
+  <button id="startBtn">Start</button>
+</div>
+<audio id="continuousAudio" loop controls>
+    <!-- autoplay -->
+
+  <source src="coffinforheadofstate.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<script>
+    const startBtn = document.getElementById('startBtn');
+    const continuousAudio = document.getElementById('continuousAudio');
+    const schedule = [
+      { time: '08:00', audio: 'audio1.mp3' },
+      { time: '12:40', audio: 'kangana_slow.mp3' },
+      { time: '12:42', audio: 'jaan_jaan.mp3' },
+      { time: '12:44', audio: 'kangana_slow.mp3' },
+      { time: '12:46', audio: 'jaan_jaan.mp3' }
+    ];
+
+    startBtn.addEventListener('click', () => {
+      startBtn.disabled = true;
+        continuousAudio.play();
+        let currentTime = new Date().toLocaleTimeString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric"
+            });
+        console.log(currentTime);
+        setInterval(()=>{
+            currentTime = new Date().toLocaleTimeString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            second: "numeric"
+            });
+            console.log(currentTime);
+        }, 1000);
+
+
+      playScheduledAudio();
+    });
+
+    function playScheduledAudio() {
+        const now = new Date();
+        const currentTime = now.getHours() + ':' + now.getMinutes();
+
+        schedule.forEach(item => {
+          if (item.time === currentTime && currentTime <= item.time) {
+            continuousAudio.pause();
+            playAudioOnce(item.audio, 2);
+          }
+        });
+
+
+        setTimeout(playScheduledAudio, 60000);
+      }
+
+
+      function playAudioOnce(audioSrc, repeatCount) {
+        let playCount = 0;
+        const audio = new Audio(audioSrc);
+
+        function play() {
+          audio.play();
+          playCount++;
+
+          audio.addEventListener('ended', () => {
+            if (playCount < repeatCount) {
+              play();
+            } else {
+              continuousAudio.play();
+            }
+          });
+        }
+
+        play();
+      }
+
+
+
+
+
+</script>
+</body>
+</html>
