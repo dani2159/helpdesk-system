@@ -13,13 +13,13 @@ class CreatePegawaiTable extends Migration
      */
     public function up()
     {
-        Schema::create('pegawai', function (Blueprint $table) {
+        Schema::create('employes', function (Blueprint $table) {
             $table->id();
             $table->string('nip');
             $table->string('nama_pegawai');
             $table->string('id_divisi');
             $table->string('jabatan'); // 1 = admin, 2 = manager / kepala unit, 3 = staff
-            $table->string('id_user');
+            $table->string('id_user')->nullable();
             $table->string('jenis_kelamin');
             $table->string('tempat_lahir');
             $table->date('tanggal_lahir');
@@ -38,6 +38,6 @@ class CreatePegawaiTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pegawai');
+        Schema::dropIfExists('employes');
     }
 }

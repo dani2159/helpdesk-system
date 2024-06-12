@@ -10,7 +10,7 @@ class SLA extends Model
     use HasFactory;
 
     protected $guard = 'web';
-    protected $table = 'sla';
+    protected $table = 'slas';
     protected $primaryKey = 'id';
     protected $fillable = [
         'name',

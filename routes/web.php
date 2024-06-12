@@ -30,3 +30,5 @@ Route::prefix('list-group')->group(function () {
     Route::get('/', 'App\Http\Controllers\ListGroupController@index')->name('list-group.index');
     Route::GET('/update-list', 'App\Http\Controllers\ListGroupController@updateGroup')->name('list-group.update');
 });
+
+    

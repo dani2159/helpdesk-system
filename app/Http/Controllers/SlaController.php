@@ -13,44 +13,44 @@ class SlaController extends Controller
         //4cZWK@EJQWJWRAv3a!Mt
 
         // ambil data token dan id group di model setting
-        $setting = SettingFonnte::all();
-        $token = $setting[0]->token;
-        $id_group = $setting[0]->id_group;
+//         $setting = SettingFonnte::all();
+//         $token = $setting[0]->token;
+//         $id_group = $setting[0]->id_group;
 
-$curl = curl_init();
+// $curl = curl_init();
 
-curl_setopt_array($curl, array(
-  CURLOPT_URL => 'https://api.fonnte.com/send',
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => '',
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 0,
-  CURLOPT_FOLLOWLOCATION => true,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => 'POST',
-  CURLOPT_POSTFIELDS => array(
-'target' => "$id_group",
-'message' => 'test message Db',
-),
-  CURLOPT_HTTPHEADER => array(
-    "Authorization: $token"
-  ),
-));
+// curl_setopt_array($curl, array(
+//   CURLOPT_URL => 'https://api.fonnte.com/send',
+//   CURLOPT_RETURNTRANSFER => true,
+//   CURLOPT_ENCODING => '',
+//   CURLOPT_MAXREDIRS => 10,
+//   CURLOPT_TIMEOUT => 0,
+//   CURLOPT_FOLLOWLOCATION => true,
+//   CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+//   CURLOPT_CUSTOMREQUEST => 'POST',
+//   CURLOPT_POSTFIELDS => array(
+// 'target' => "$id_group",
+// 'message' => 'test message Db',
+// ),
+//   CURLOPT_HTTPHEADER => array(
+//     "Authorization: $token"
+//   ),
+// ));
 
-$response = curl_exec($curl);
-if (curl_errno($curl)) {
-  $error_msg = curl_error($curl);
-}
-curl_close($curl);
+// $response = curl_exec($curl);
+// if (curl_errno($curl)) {
+//   $error_msg = curl_error($curl);
+// }
+// curl_close($curl);
 
-if (isset($error_msg)) {
- echo $error_msg;
-}
-echo $response;
+// if (isset($error_msg)) {
+//  echo $error_msg;
+// }
+// echo $response;
 
 
 
-        // return view('sla.index');
+        return view('sla.index');
     }
 
     public function create(){

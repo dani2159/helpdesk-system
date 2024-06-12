@@ -13,7 +13,7 @@ class CreateSlaTable extends Migration
      */
     public function up()
     {
-        Schema::create('sla', function (Blueprint $table) {
+        Schema::create('slas', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('response');
@@ -30,6 +30,6 @@ class CreateSlaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sla');
+        Schema::dropIfExists('slas');
     }
 }
