@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('dashboard');
+    // return view('dashboard');
+    return redirect()->route('ticket.index');
 });
 
 Route::prefix('sla')->group(function () {
@@ -31,4 +32,8 @@ Route::prefix('list-group')->group(function () {
     Route::GET('/update-list', 'App\Http\Controllers\ListGroupController@updateGroup')->name('list-group.update');
 });
 
-    
+Route::prefix('ticket')->group(function () {
+    Route::get('/', 'App\Http\Controllers\TicketController@index')->name('ticket.index');
+    Route::post('/store', 'App\Http\Controllers\TicketController@store')->name('ticket.store');
+    Route::get('/search', 'App\Http\Controllers\TicketController@search')->name('ticket.search');
+});

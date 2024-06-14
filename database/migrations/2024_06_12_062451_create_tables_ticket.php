@@ -15,6 +15,7 @@ class CreateTablesTicket extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->id();
+            $table->string('code_ticket');
             $table->foreignId('employes_id')->constrained()->onDelete('cascade'); //Pegawai Pembuat
             $table->foreignId('sla_id')->constrained()->onDelete('cascade');
             $table->foreignId('divisi_id')->constrained()->onDelete('cascade');
@@ -23,6 +24,9 @@ class CreateTablesTicket extends Migration
             $table->text('description');
             $table->integer('status')->default(0); //0: open, 1: pending, 2: waiting, 3: in progress, 4: resolved, 5: closed
             $table->integer('priority')->default(0); //0: low, 1: medium, 2: high
+            //arahkan from_divisi_id ke divisi id
+            $table->foreignId('from_divisi_id')->constrained('divisis')->onDelete('cascade');
+            $table->string('file_uploads')->nullable();
             //pegawai yang mengerjakan
             $table->string('assigned_to')->nullable();
             $table->string('decription_assigned')->nullable();
